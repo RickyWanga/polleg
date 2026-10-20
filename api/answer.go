@@ -189,7 +189,7 @@ func PostAnswerHandler(res http.ResponseWriter, req *http.Request) {
 		}
 
 		// Create answer version
-		version := models.AnswerVersion{
+		version = models.AnswerVersion{
 			AnswerID: answer.ID,
 			Content:  ans.Content,
 		}
