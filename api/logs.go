@@ -52,7 +52,7 @@ func LogsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Images
 	var images []models.Image
-	if err := db.Find(&images).Error; err != nil {
+	if err := db.Unscoped().Find(&images).Error; err != nil {
 		slog.With("err", err).Error("error while getting images from DB")
 		httputil.WriteError(w, http.StatusBadRequest, "could not get logs")
 		return
@@ -61,7 +61,7 @@ func LogsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Answers
 	var answers []models.Answer
-	if err := db.Find(&answers).Error; err != nil {
+	if err := db.Unscoped().Find(&answers).Error; err != nil {
 		slog.With("err", err).Error("error while getting answers from DB")
 		httputil.WriteError(w, http.StatusBadRequest, "could not get logs")
 		return
@@ -79,7 +79,7 @@ func LogsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Users
 	var users []models.User
-	if err := db.Find(&users).Error; err != nil {
+	if err := db.Unscoped().Find(&users).Error; err != nil {
 		slog.With("err", err).Error("error while getting users from DB")
 		httputil.WriteError(w, http.StatusBadRequest, "could not get logs")
 		return
@@ -88,7 +88,7 @@ func LogsHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Proposals
 	var proposals []models.Proposal
-	if err := db.Find(&proposals).Error; err != nil {
+	if err := db.Unscoped().Find(&proposals).Error; err != nil {
 		slog.With("err", err).Error("error while getting proposals from DB")
 		httputil.WriteError(w, http.StatusBadRequest, "could not get logs")
 		return
