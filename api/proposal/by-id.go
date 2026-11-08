@@ -114,7 +114,7 @@ func UpdateProposalByIdHandler(res http.ResponseWriter, req *http.Request) {
 	}
 
 	proposal.Start = data.Coords.Start
-	proposal.Start = data.Coords.End
+	proposal.End = data.Coords.End
 
 	if err := db.Save(&proposal).Error; err != nil {
 		slog.Error("error while updating proposal", "proposal", proposal, "err", err)
